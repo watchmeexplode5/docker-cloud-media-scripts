@@ -1,8 +1,20 @@
 #!/usr/bin/with-contenv sh
 . "/usr/bin/variables"
 
+#######################
+### Cleanup Script ####
+#######################
+#### Version 0.9.1 ####
+#######################
+
 # unmount fuse
 fusermount -uz "${cloud_encrypt_dir}"
 fusermount -uz "${cloud_decrypt_dir}"
 fusermount -uz "${local_decrypt_dir}"
 fusermount -uz "${local_media_dir}"
+
+find /mnt/user/appdata/other/rclone_docker/remotes -name dockers_started -delete
+find /mnt/user/appdata/other/rclone_docker/remotes -name mount_running -delete
+find /mnt/user/appdata/other/rclone_docker/remotes -name upload_running -delete
+
+exit
